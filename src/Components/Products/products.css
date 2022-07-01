@@ -1,0 +1,155 @@
+@font-face {
+    font-family: 'BNazanin';
+    src: url('../../../fonts/BNazanin.eot') format('eot'),  /* IE6–8 */
+         url('../../../fonts/BNazanin.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+         url('../../../fonts/BNazanin.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+  }
+
+.mainProductsBody{
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(182, 193, 204);
+}
+
+.productsNavbar{
+    background-color: white;
+    height: 115px;
+}
+
+.productsNavbarTop{
+    display: flex;
+    /* background-color: burlywood; */
+    height: 70%;
+}
+
+.productsNavbarTop > button{
+    font-family: "BNazanin";
+    font-weight: bold;  
+    color: rgb(112, 112, 112);
+    height: 45px;
+    margin-top: 23px;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.productsSearchBox{
+    display: flex;
+    margin-right: 10px;
+    align-self: center;
+    height: 70%;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+}
+
+.productsTorobImg{
+    margin-left: 5px;
+    width: 60px;
+    height: 60px;
+}
+
+.productsSearchImg{
+    transform: scaleX(-1);
+    background-color: rgba(255, 0, 0, 0.692);
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.productsSearchBox p{
+    font-weight: bold;  
+    color:red;
+    font-size: 25px;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.productsSearchBox input{
+    height: 40px;
+    width: 400px;
+    text-align: right;
+    border-left: 0;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-width: 1px;
+}
+
+.productsNavbarbottom{
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 30%;
+}
+
+.ProductsBody{
+    display: flex;
+    /* background-color: aqua; */
+    height: 100%;
+    /* opacity: 0.5; */
+    border-top: 0.5px;
+    border-top-style: solid;
+    border-color: rgb(112, 112, 112);
+
+}
+
+.ProductsBodyLeft{
+    width: 75%;
+    border-right: 0.5px;
+    border-right-style: solid;
+    border-color: rgb(142, 154, 165);
+}
+
+.ProductsBodyRight{
+    width: 25%;
+}
+
+.filtersPartLeft{
+    height: 50px;
+    border-bottom: 0.5px;
+    border-bottom-style: solid;
+    border-color: rgb(142, 154, 165);
+}
+
+.costumizeDropDown{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.filteredProducts{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.eachProduct{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 10%;
+    align-items: center;
+    height: 400px;
+}
+
+.productImg{
+    width: 90%;
+    height: 60%;
+}
+
+.wishListIcon{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+
+
