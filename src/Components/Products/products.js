@@ -94,7 +94,7 @@ const Products = () => {
                         <input className="productsSearchBoxInput"
                             placeholder="نام کالای خود را وارد کنید"></input>
                         <p>ترب</p>
-                        <img className="productsTorobImg" src="https://torob.com/static/images/torob_logo.svg"></img>
+                        <img className="productsTorobImg" src="https://torob.com/static/images/torob_logo.svg" ></img>
                     </div>
                 </div>
                 <div className="productsNavbarbottom">
