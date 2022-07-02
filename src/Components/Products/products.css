@@ -1,11 +1,14 @@
 @font-face {
     font-family: 'BNazanin';
-    src: url('../../../fonts/BNazanin.eot') format('eot'),  /* IE6–8 */
-         url('../../../fonts/BNazanin.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-         url('../../../fonts/BNazanin.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
-  }
+    src: url('../../../fonts/BNazanin.eot') format('eot'),
+        /* IE6–8 */
+        url('../../../fonts/BNazanin.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../../../fonts/BNazanin.ttf') format('truetype');
+    /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
 
-.mainProductsBody{
+.mainProductsBody {
     background-size: cover;
     position: fixed;
     top: 0;
@@ -13,22 +16,23 @@
     right: 0;
     bottom: 0;
     background-color: rgb(182, 193, 204);
+    overflow: auto;
 }
 
-.productsNavbar{
+.productsNavbar {
     background-color: white;
     height: 115px;
 }
 
-.productsNavbarTop{
+.productsNavbarTop {
     display: flex;
     /* background-color: burlywood; */
     height: 70%;
 }
 
-.productsNavbarTop > button{
+.productsNavbarTop>button {
     font-family: "BNazanin";
-    font-weight: bold;  
+    font-weight: bold;
     color: rgb(112, 112, 112);
     height: 45px;
     margin-top: 23px;
@@ -37,7 +41,7 @@
     width: 100px;
 }
 
-.productsSearchBox{
+.productsSearchBox {
     display: flex;
     margin-right: 10px;
     align-self: center;
@@ -47,13 +51,13 @@
     align-items: center;
 }
 
-.productsTorobImg{
+.productsTorobImg {
     margin-left: 5px;
     width: 60px;
     height: 60px;
 }
 
-.productsSearchImg{
+.productsSearchImg {
     transform: scaleX(-1);
     background-color: rgba(255, 0, 0, 0.692);
     border-bottom-right-radius: 5px;
@@ -62,15 +66,15 @@
     cursor: pointer;
 }
 
-.productsSearchBox p{
-    font-weight: bold;  
-    color:red;
+.productsSearchBox p {
+    font-weight: bold;
+    color: red;
     font-size: 25px;
     align-self: center;
     margin-left: 10px;
 }
 
-.productsSearchBox input{
+.productsSearchBox input {
     height: 40px;
     width: 400px;
     text-align: right;
@@ -80,7 +84,7 @@
     border-width: 1px;
 }
 
-.productsNavbarbottom{
+.productsNavbarbottom {
     /* background-color: aqua; */
     display: flex;
     align-items: center;
@@ -89,7 +93,7 @@
     height: 30%;
 }
 
-.ProductsBody{
+.ProductsBody {
     display: flex;
     /* background-color: aqua; */
     height: 100%;
@@ -100,56 +104,93 @@
 
 }
 
-.ProductsBodyLeft{
+.ProductsBodyLeft {
     width: 75%;
     border-right: 0.5px;
     border-right-style: solid;
     border-color: rgb(142, 154, 165);
 }
 
-.ProductsBodyRight{
+.ProductsBodyRight {
     width: 25%;
 }
 
-.filtersPartLeft{
+.filtersPartLeft {
     height: 50px;
     border-bottom: 0.5px;
     border-bottom-style: solid;
     border-color: rgb(142, 154, 165);
 }
 
-.costumizeDropDown{
+.costumizeDropDown {
     margin-left: 10px;
     margin-top: 10px;
 }
 
-.filteredProducts{
+.filteredProducts {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.eachProduct{
+.eachProduct {
     background-color: white;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     margin: 10%;
     align-items: center;
-    height: 400px;
+    height: 350px;
 }
 
-.productImg{
+.productImg {
     width: 90%;
     height: 60%;
 }
 
-.wishListIcon{
+.detailsPart{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.price{
+    margin-top: 10px;
+}
+
+.bottomOfEachProduct {
+    display: flex;
+}
+
+.wishListIcon {
     height: 30px;
     width: 30px;
     cursor: pointer;
+    margin-left: 20px;
 }
 
+.cartIcon {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    margin-right: 20px;
+}
 
+.bottomOfEachProduct > img:hover{
+    opacity: 0.5;
+}
 
+@media screen and (min-width:1240px){
+    .filteredProducts { 
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
+}
+
+@media screen and (max-width:780px){
+    .filteredProducts {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}

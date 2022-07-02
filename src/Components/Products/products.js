@@ -8,7 +8,8 @@ import {
 } from 'react-bootstrap';
 import { useState } from "react"
 import phoneImg from "../../phone.jpg";
-import heart from "../../heart.png";
+import heartImg from "../../heart.png";
+import cartImg from "../../shopping_cart.png";
 
 
 
@@ -127,6 +128,7 @@ const Products = () => {
             </div>
 
             <div className="ProductsBody">
+
                 <div className="ProductsBodyLeft">
                     {/* <>
                         <Button
@@ -166,8 +168,10 @@ const Products = () => {
                             <Link className="detailsPart" to={"/"}>گوشی شیائومی</Link>
                             {/* <h3 className="detailsPart">گوشی شیائومی</h3> */}
                             <p className="price">قیمت از 1.800.000</p>
-                            {/* <img src={heart} className="wishListIcon"></img> */}
-                            <i class="icon-heart-empty"></i>   
+                            <div className="bottomOfEachProduct">
+                                <img src={cartImg} className="cartIcon"></img>
+                                <img src={heartImg} className="wishListIcon"></img>
+                            </div>
 
                         </div>
                         <div className="eachProduct">
@@ -175,44 +179,64 @@ const Products = () => {
                             <Link className="detailsPart" to={"/"}>گوشی شیائومی</Link>
                             {/* <h3 className="detailsPart">گوشی شیائومی</h3> */}
                             <p className="price">قیمت از 1.800.000</p>
-                            <img src={heart} className="wishListIcon"></img>
+                            <div className="bottomOfEachProduct">
+                                <img src={cartImg} className="cartIcon"></img>
+                                <img src={heartImg} className="wishListIcon"></img>
+                            </div>
+
                         </div>
                         <div className="eachProduct">
                             <img src={phoneImg} alt="xiaomi phone" className="productImg"></img>
                             <Link className="detailsPart" to={"/"}>گوشی شیائومی</Link>
                             {/* <h3 className="detailsPart">گوشی شیائومی</h3> */}
                             <p className="price">قیمت از 1.800.000</p>
-                            <img src={heart} className="wishListIcon"></img>
+                            <div className="bottomOfEachProduct">
+                                <img src={cartImg} className="cartIcon"></img>
+                                <img src={heartImg} className="wishListIcon"></img>
+                            </div>
+
+                        </div>
+
+                        <div className="eachProduct">
+                            <img src={phoneImg} alt="xiaomi phone" className="productImg"></img>
+                            <Link className="detailsPart" to={"/"}>گوشی شیائومی</Link>
+                            {/* <h3 className="detailsPart">گوشی شیائومی</h3> */}
+                            <p className="price">قیمت از 1.800.000</p>
+                            <div className="bottomOfEachProduct">
+                                <img src={cartImg} className="cartIcon"></img>
+                                <img src={heartImg} className="wishListIcon"></img>
+                            </div>
+
+                        </div>
+
+                        <div className="eachProduct">
+                            <img src={phoneImg} alt="xiaomi phone" className="productImg"></img>
+                            <Link className="detailsPart" to={"/"}>گوشی شیائومی</Link>
+                            {/* <h3 className="detailsPart">گوشی شیائومی</h3> */}
+                            <p className="price">قیمت از 1.800.000</p>
+                            <div className="bottomOfEachProduct">
+                                <img src={cartImg} className="cartIcon"></img>
+                                <img src={heartImg} className="wishListIcon"></img>
+                            </div>
+
+                        </div>
+
+                        <div className="eachProduct">
+                            <img src={phoneImg} alt="xiaomi phone" className="productImg"></img>
+                            <Link className="detailsPart" to={"/"}>گوشی شیائومی</Link>
+                            {/* <h3 className="detailsPart">گوشی شیائومی</h3> */}
+                            <p className="price">قیمت از 1.800.000</p>
+                            <div className="bottomOfEachProduct">
+                                <img src={cartImg} className="cartIcon"></img>
+                                <img src={heartImg} className="wishListIcon"></img>
+                            </div>
+
                         </div>
                     </div>
-                    {/* <div className="filteredProducts">
-                        <img src={phoneImg} alt="xiaomi phone"></img>
-                        <h3 className="detailsPart">گوشی شیائومی</h3>
-                        <p className="price">قیمت از 1.800.000</p>
-                        <img src={heart} className="wishListIcon"></img>
-                    </div>
-                    <div className="filteredProducts">
-                        <img src={phoneImg} alt="xiaomi phone"></img>
-                        <h3 className="detailsPart">گوشی شیائومی</h3>
-                        <p className="price">قیمت از 1.800.000</p>
-                        <img src={heart} className="wishListIcon"></img>
-                    </div>
-                    <div className="filteredProducts">
-                        <img src={phoneImg} alt="xiaomi phone"></img>
-                        <h3 className="detailsPart">گوشی شیائومی</h3>
-                        <p className="price">قیمت از 1.800.000</p>
-                        <img src={heart} className="wishListIcon"></img>
-                    </div> */}
-
-
-
-
-
                 </div>
 
 
                 <div className="ProductsBodyRight">
-                    right
                 </div>
             </div>
 
