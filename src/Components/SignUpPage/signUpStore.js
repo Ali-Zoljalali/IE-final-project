@@ -8,28 +8,55 @@ import {
     NavDropdown, Container, Dropdown, Form
 } from 'react-bootstrap';
 import { useState } from "react"
+import { ReactPasswordChecklistProps } from "react-password-checklist";
+import axios from "axios"
 
 
 
 
 
-const SignUpStore = () => {
+const SignUpUser = () => {
     const navigate = useNavigate();
 
+    const [name, setName] = useState("");
     const [username, setUsername] = useState("");
+    const [phoneNumber, setphoneNumber] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [response, setResponse] = useState("");
+    console.log(name);
+    console.log(username);
+    console.log(phoneNumber);
+    console.log(email);
+    console.log(password);
+
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => {
-        // When the handler is invoked
-        // inverse the boolean state of passwordShown
         setShowPassword(!showPassword);
     };
-    // const onSubmitForm = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    //     navigate("/profile");
-    // }
+
+    const signUpAcc = (e) => {
+        let user={
+            username: username,
+            name: name,
+            phoneNumber: phoneNumber,
+            password : password,
+            email: email,
+            userType: "SELLER"
+        }
+        console.log(user);
+        axios.post('http://ie-final-project.herokuapp.com/user/signup',user)
+        .then((res)=>{
+            console.log(res)
+            setResponse(res)
+        },(error)=>{
+             console.log(error)
+        });
+
+    }
+
+
+
     return (
         <div className="mainSignBody">
             <div className="SignPart">
@@ -38,19 +65,34 @@ const SignUpStore = () => {
                     <p className="torobText">ترب</p>
                     <div className="signUpForm">
                         <lable>نام</lable>
-                        <input className="in1"></input>
+                        <input onChange={(e) => {
+                            setName(e.target.value);
+                        }} required></input>
                         <lable>نام کاربری</lable>
-                        <input></input>
+                        <input onChange={(e) => {
+                            setUsername(e.target.value);
+                        }} required></input>
                         <lable>شماره تلفن</lable>
-                        <input></input>
+                        <input onChange={(e) => {
+                            setphoneNumber(e.target.value);
+                        }} required></input>
                         <lable>ایمیل</lable>
-                        <input></input>
+                        <input type="email" onChange={(e) => {
+                            setEmail(e.target.value);
+                        }} required></input>
                         <lable>پسورد</lable>
                         <div className="password">
                             <img src={eyeImg} onClick={togglePassword}></img>
-                            <input type={showPassword ? "text" : "password"} className="in1"></input>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
+                                required
+                            ></input>
+
                         </div>
-                        <button className="btn-danger">تایید و ارسال</button>
+                        <button className="btn-danger" onClick={() => signUpAcc()}>تایید و ارسال</button>
 
                         <div className="loginLink">
                             <Link className="loginParagraph" to="/login">
@@ -65,4 +107,4 @@ const SignUpStore = () => {
     )
 }
 
-export default SignUpStore;
+export default SignUpUser;

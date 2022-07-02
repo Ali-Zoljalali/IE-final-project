@@ -8,6 +8,7 @@ import {
     NavDropdown, Container, Dropdown, Form
 } from 'react-bootstrap';
 import { useState } from "react"
+import axios from "axios";
 
 
 
@@ -15,19 +16,31 @@ import { useState } from "react"
 
 const Login = () => {
     const navigate = useNavigate();
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [response, setResponse] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => {
-        // When the handler is invoked
-        // inverse the boolean state of passwordShown
         setShowPassword(!showPassword);
     };
+
+    const signUpAcc = () => {
+        let user={
+            username: username,
+            password : password
+        }
+        console.log(user);
+        axios.post('http://ie-final-project.herokuapp.com/auth/login',user)
+        .then((res)=>{
+            console.log(res)
+            setResponse(res)
+        },(error)=>{
+             console.log(error)
+        });
+
+    }
+
+
     return (
         <div className="mainSignBody">
             <div className="SignPart">
@@ -38,7 +51,9 @@ const Login = () => {
                         {/* <lable>نام</lable>
                         <input className="in1"></input> */}
                         <lable>نام کاربری</lable>
-                        <input></input>
+                        <input onChange={(e) => {
+                            setUsername(e.target.value);
+                        }} required></input>
                         {/* <lable>شماره تلفن</lable>
                         <input></input> */}
                         {/* <lable>ایمیل</lable>
@@ -46,9 +61,12 @@ const Login = () => {
                         <lable>پسورد</lable>
                         <div className="password">
                             <img src={eyeImg} onClick={togglePassword}></img>
-                            <input type={showPassword ? "text" : "password"} className="in1"></input>
+                            <input type={showPassword ? "text" : "password"} 
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }} required></input>
                         </div>
-                        <button className="btn-danger">تایید و ارسال</button>
+                        <button className="btn-danger" onClick={() => signUpAcc()}>تایید و ارسال</button>
 
                         <div className="loginLink">
                             <Link className="loginParagraph" to="/resetPass">

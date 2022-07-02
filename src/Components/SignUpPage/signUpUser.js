@@ -8,6 +8,8 @@ import {
     NavDropdown, Container, Dropdown, Form
 } from 'react-bootstrap';
 import { useState } from "react"
+import { ReactPasswordChecklistProps } from "react-password-checklist";
+import axios from "axios"
 
 
 
@@ -21,6 +23,7 @@ const SignUpUser = () => {
     const [phoneNumber, setphoneNumber] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [response, setResponse] = useState("");
     console.log(name);
     console.log(username);
     console.log(phoneNumber);
@@ -31,11 +34,28 @@ const SignUpUser = () => {
     const togglePassword = () => {
         setShowPassword(!showPassword);
     };
-    // const onSubmitForm = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    //     navigate("/profile");
-    // }
+
+    const signUpAcc = (e) => {
+        let user={
+            username: username,
+            name: name,
+            phoneNumber: phoneNumber,
+            password : password,
+            email: email,
+            userType: "BUYER"
+        }
+        console.log(user);
+        axios.post('http://ie-final-project.herokuapp.com/user/signup',user)
+        .then((res)=>{
+            console.log(res)
+            setResponse(res)
+        },(error)=>{
+             console.log(error)
+        });
+
+    }
+
+
 
     return (
         <div className="mainSignBody">
@@ -47,27 +67,32 @@ const SignUpUser = () => {
                         <lable>نام</lable>
                         <input onChange={(e) => {
                             setName(e.target.value);
-                        }}></input>
+                        }} required></input>
                         <lable>نام کاربری</lable>
                         <input onChange={(e) => {
                             setUsername(e.target.value);
-                        }}></input>
+                        }} required></input>
                         <lable>شماره تلفن</lable>
                         <input onChange={(e) => {
                             setphoneNumber(e.target.value);
-                        }}></input>
+                        }} required></input>
                         <lable>ایمیل</lable>
                         <input type="email" onChange={(e) => {
                             setEmail(e.target.value);
-                        }}></input>
+                        }} required></input>
                         <lable>پسورد</lable>
                         <div className="password">
                             <img src={eyeImg} onClick={togglePassword}></img>
-                            <input type={showPassword ? "text" : "password"} onChange={(e) => {
-                            setPassword(e.target.value);
-                        }}></input>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
+                                required
+                            ></input>
+
                         </div>
-                        <button className="btn-danger">تایید و ارسال</button>
+                        <button className="btn-danger" onClick={() => signUpAcc()}>تایید و ارسال</button>
 
                         <div className="loginLink">
                             <Link className="loginParagraph" to="/login">

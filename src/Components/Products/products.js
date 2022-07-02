@@ -11,6 +11,7 @@ import { useState } from "react"
 import phoneImg from "../../phone.jpg";
 import heartImg from "../../heart.png";
 import cartImg from "../../shopping_cart.png";
+import axios from "axios"
 
 
 
@@ -19,16 +20,19 @@ import cartImg from "../../shopping_cart.png";
 const Products = () => {
 
     const [priceFilter, setpriceFilter] = useState(0);
+    const [searchBoxText, setSearchBoxText] = useState("");
+    const [response, setResponse] = useState("");
+
 
 
     const navigate = useNavigate();
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     // http://ie-final-project.herokuapp.com/store/get-filtered-products
     const myProductArray = window.location.pathname.split("/");
     let device = "";
     let brand = "";
+    let mobileBrands=[];
+    let tabletBrands=[];
+    let laptopBrands=[];
     if (myProductArray.length == 2) {
         device = myProductArray[1];
     } else if (myProductArray.length == 3) {
@@ -43,9 +47,42 @@ const Products = () => {
         case "tablets": persianDevice = "تبلت"; break;
         case "laptops": persianDevice = "لپ تاپ"; break;
     }
+    const newestFilter = () => {
+        let filter = {
+            sortBy: "DATE_ASCENDING",
+            categories: [
+                device.toUpperCase()
+              ],
+              mobileBrands: [
+                "SAMSUNG"
+              ],
+              tabletBrands: [
+                "SAMSUNG"
+              ],
+              laptopBrands: [
+                "ASUS"
+              ]
+        };
+        axios.get('http://ie-final-project.herokuapp.com/product/get-filtered-products',filter)
+        .then((res)=>{
+            console.log(res);
+            setResponse(res);
+        },(error)=>{
+            console.log(error)
+        });
+    }
 
+    const oldestFilter = () => {
 
-    // const [open, setOpen] = useState(false);
+    }
+    
+    const mostExpensiveFilter = () => {
+
+    }
+    
+    const chippestFilter = () => {
+
+    }
 
     return (
         <div className="mainProductsBody">
@@ -150,10 +187,10 @@ const Products = () => {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/newest"> جدیدترین </Dropdown.Item>
-                                <Dropdown.Item href="#/oldest">قدیمی ترین </Dropdown.Item>
-                                <Dropdown.Item href="#/expensive">گران ترین</Dropdown.Item>
-                                <Dropdown.Item href="#/chip">ارزان ترین</Dropdown.Item>
+                                <Dropdown.Item href="#/newest" onClick={()=>newestFilter()}> جدیدترین </Dropdown.Item>
+                                <Dropdown.Item href="#/oldest" onClick={()=>oldestFilter()}>قدیمی ترین </Dropdown.Item>
+                                <Dropdown.Item href="#/expensive" onClick={()=>mostExpensiveFilter()}>گران ترین</Dropdown.Item>
+                                <Dropdown.Item href="#/chip" onClick={()=>chippestFilter()}>ارزان ترین</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
