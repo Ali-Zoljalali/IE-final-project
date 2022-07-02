@@ -96,3 +96,27 @@
 .in1{
     text-align: right;
 }
+
+.password{
+    width: 100%;
+    display: flex;
+    height: 25px;
+    margin-bottom: 5px;
+    margin-right: 0;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.password img{
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.password input{
+    width: 80%;
+    height: 25px;
+    margin: 5px;
+    border-radius: 5px;
+}

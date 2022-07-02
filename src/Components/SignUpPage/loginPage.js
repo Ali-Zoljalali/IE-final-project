@@ -13,30 +13,21 @@ import { useState } from "react"
 
 
 
-const SignUpUser = () => {
+const Login = () => {
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-    const [name, setName] = useState("");
     const [username, setUsername] = useState("");
-    const [phoneNumber, setphoneNumber] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    console.log(name);
-    console.log(username);
-    console.log(phoneNumber);
-    console.log(email);
-    console.log(password);
-
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => {
+        // When the handler is invoked
+        // inverse the boolean state of passwordShown
         setShowPassword(!showPassword);
     };
-    // const onSubmitForm = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    //     navigate("/profile");
-    // }
-
     return (
         <div className="mainSignBody">
             <div className="SignPart">
@@ -44,36 +35,26 @@ const SignUpUser = () => {
                     <img src="https://torob.com/static/images/torob_logo.svg" ></img>
                     <p className="torobText">ترب</p>
                     <div className="signUpForm">
-                        <lable>نام</lable>
-                        <input onChange={(e) => {
-                            setName(e.target.value);
-                        }}></input>
+                        {/* <lable>نام</lable>
+                        <input className="in1"></input> */}
                         <lable>نام کاربری</lable>
-                        <input onChange={(e) => {
-                            setUsername(e.target.value);
-                        }}></input>
-                        <lable>شماره تلفن</lable>
-                        <input onChange={(e) => {
-                            setphoneNumber(e.target.value);
-                        }}></input>
-                        <lable>ایمیل</lable>
-                        <input type="email" onChange={(e) => {
-                            setEmail(e.target.value);
-                        }}></input>
+                        <input></input>
+                        {/* <lable>شماره تلفن</lable>
+                        <input></input> */}
+                        {/* <lable>ایمیل</lable>
+                        <input></input> */}
                         <lable>پسورد</lable>
                         <div className="password">
                             <img src={eyeImg} onClick={togglePassword}></img>
-                            <input type={showPassword ? "text" : "password"} onChange={(e) => {
-                            setPassword(e.target.value);
-                        }}></input>
+                            <input type={showPassword ? "text" : "password"} className="in1"></input>
                         </div>
                         <button className="btn-danger">تایید و ارسال</button>
 
                         <div className="loginLink">
-                            <Link className="loginParagraph" to="/login">
+                            <Link className="loginParagraph" to="/resetPass">
                                 <p>ورود</p>
                             </Link>
-                            قبلا ثبت نام کرده اید؟
+                            رمز عبور خود را فراموش کرده اید؟
                         </div>
                     </div>
                 </div>
@@ -82,4 +63,4 @@ const SignUpUser = () => {
     )
 }
 
-export default SignUpUser;
+export default Login;

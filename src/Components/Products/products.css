@@ -129,7 +129,7 @@
 
 .filteredProducts {
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -139,7 +139,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    margin: 10%;
+    margin: 3%;
     align-items: center;
     height: 350px;
 }
@@ -149,13 +149,13 @@
     height: 60%;
 }
 
-.detailsPart{
+.detailsPart {
     text-decoration: none;
     color: black;
     margin-bottom: 10px;
 }
 
-.price{
+.price {
     margin-top: 10px;
 }
 
@@ -177,20 +177,62 @@
     margin-right: 20px;
 }
 
-.bottomOfEachProduct > img:hover{
+.bottomOfEachProduct>img:hover {
     opacity: 0.5;
 }
 
-@media screen and (min-width:1240px){
-    .filteredProducts { 
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    
+.checkBoxFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
-@media screen and (max-width:780px){
+.checkBoxFilter input {
+    margin: 5px;
+}
+
+.checkBoxFilter label {
+    margin: 5px;
+    font-size: medium;
+}
+
+.rangeInput {
+    width: 100%;
+}
+
+.priceRange {
+    font-family: "BNazanin";
+    font-size: 150%;
+    text-align: right;
+}
+
+
+
+
+@media screen and (min-width:1240px) {
+    .filteredProducts {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+}
+
+@media screen and (max-width:780px) {
     .filteredProducts {
         grid-template-columns: 1fr 1fr;
     }
-    
+
+    .productsTorobImg {
+        /* margin-left: 5px; */
+        width: 0;
+        height: 0;
+    }
+
+    .productsSearchBox p {
+        font-size: 0;
+    }
+
+    .productsSearchBox input {
+        width: 280px;
+    }
+
 }

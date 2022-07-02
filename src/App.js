@@ -8,6 +8,7 @@ import HomePage from "./Components/HomePage/homePage"
 import SignUpPage from "./Components/SignUpPage/signUpPage"
 import SignUpUser from "./Components/SignUpPage/signUpUser"
 import SignUpStore from "./Components/SignUpPage/signUpStore"
+import Login from "./Components/SignUpPage/loginPage"
 import Products from "./Components/Products/products"
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/signup" element={<SignUpPage></SignUpPage>} />
           <Route exact path="/signup/user" element={<SignUpUser></SignUpUser>} />
           <Route exact path="/signup/store" element={<SignUpStore></SignUpStore>} />
+          <Route exact path="/login" element={<Login></Login>} />
           <Route exact path="/mobiles" element={<Products></Products>} />
           <Route exact path="/mobiles/samsung" element={<Products></Products>} />
           <Route exact path="/mobiles/xiaomi" element={<Products></Products>} />

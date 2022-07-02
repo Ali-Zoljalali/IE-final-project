@@ -2,9 +2,10 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import "./products.css";
 import torobPic from "../../torob.png"
 import searchPic from "../../search.png"
+import NumberFormat from "react-number-format"
 import {
     Button, Modal, Navbar, Nav,
-    NavDropdown, Container, Dropdown, Collapse
+    NavDropdown, Container, Dropdown, Collapse, Accordion
 } from 'react-bootstrap';
 import { useState } from "react"
 import phoneImg from "../../phone.jpg";
@@ -16,6 +17,10 @@ import cartImg from "../../shopping_cart.png";
 
 
 const Products = () => {
+
+    const [priceFilter, setpriceFilter] = useState(0);
+
+
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -31,6 +36,13 @@ const Products = () => {
         brand = myProductArray[2];
     }
     console.log(device + " " + brand);
+
+    let persianDevice = "";
+    switch (device) {
+        case "mobiles": persianDevice = "گوشی"; break;
+        case "tablets": persianDevice = "تبلت"; break;
+        case "laptops": persianDevice = "لپ تاپ"; break;
+    }
 
 
     // const [open, setOpen] = useState(false);
@@ -130,22 +142,6 @@ const Products = () => {
             <div className="ProductsBody">
 
                 <div className="ProductsBodyLeft">
-                    {/* <>
-                        <Button
-                            onClick={() => setOpen(!open)}
-                            aria-controls="example-collapse-text"
-                            aria-expanded={open}
-                        >
-                            click
-                        </Button>
-                        <Collapse in={open}>
-                            <div id="example-collapse-text">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-                                labore wes anderson cred nesciunt sapiente ea proident.
-                            </div>
-                        </Collapse>
-                    </> */}
 
                     <div className="filtersPartLeft">
                         <Dropdown className="costumizeDropDown">
@@ -237,6 +233,47 @@ const Products = () => {
 
 
                 <div className="ProductsBodyRight">
+                    <div className="rightFilters">
+                        <Accordion defaultActiveKey={['0']} alwaysOpen>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>زیر دسته ها</Accordion.Header>
+                                <Accordion.Body>
+
+                                    <Accordion defaultActiveKey="0">
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>{persianDevice}</Accordion.Header>
+                                            <Accordion.Body>
+                                                <div className="checkBoxFilter">
+                                                    <div>
+                                                        <label>{device == "mobiles" || device == "tablets" ? "سامسونگ" : "لنوو"}</label>
+                                                        <input type="checkbox" defaultChecked={brand == "samsung" || brand == "lenovo" ? true : false}></input>
+                                                    </div>
+                                                    <div>
+                                                        <label>{device == "mobiles" || device == "tablets" ? "شیائومی" : "ایسوس"}</label>
+                                                        <input type="checkbox" defaultChecked={brand == "xiaomi" || brand == "asus" ? true : false}></input>
+                                                    </div>
+                                                    <div>
+                                                        <label>اپل</label>
+                                                        <input type="checkbox" defaultChecked={brand == "apple" ? true : false}></input>
+                                                    </div>
+                                                </div>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
+
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header>قیمت</Accordion.Header>
+                                <Accordion.Body>
+                                    <input className="rangeInput" type="range" min="0" max="10000000" onInput={(e) => {
+                                        setpriceFilter(e.target.value);
+                                    }}></input>
+                                    <p className="priceRange"> از 0 تا <NumberFormat value={priceFilter} displayType={'text'} thousandSeparator /> تومان</p>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+                    </div>
                 </div>
             </div>
 
