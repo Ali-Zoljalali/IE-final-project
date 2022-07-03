@@ -10,6 +10,8 @@ import SignUpUser from "./Components/SignUpPage/signUpUser"
 import SignUpStore from "./Components/SignUpPage/signUpStore"
 import Login from "./Components/SignUpPage/loginPage"
 import Products from "./Components/Products/products"
+import UserProfile from "./Components/Profile/userProfile"
+import StoreProfile from "./Components/Profile/storeProfile"
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
           <Route exact path="/laptops/lenovo" element={<Products></Products>} />
           <Route exact path="/laptops/asus" element={<Products></Products>} />
           <Route exact path="/laptops/apple" element={<Products></Products>} />
+          <Route exact path="/login/user/profile" element={<UserProfile></UserProfile>} />
+          <Route exact path="/login/store/profile" element={<StoreProfile></StoreProfile>} />
         </Routes>
       </div>
     </BrowserRouter>

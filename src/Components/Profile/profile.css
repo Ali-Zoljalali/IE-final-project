@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'BNazanin';
+    src: url('../../../fonts/BNazanin.eot') format('eot'),
+        /* IE6–8 */
+        url('../../../fonts/BNazanin.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../../../fonts/BNazanin.ttf') format('truetype');
+    /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+
+.userProfileBody{
+    overflow: auto;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(182, 193, 204);
+}
+
+.topProfileDetails{
+    display: flex;
+    background-color: rgb(140, 171, 201);
+    height: 200px;
+   
+}
+
+.topProfDetLeft img{
+    width: 150px;
+}
+
+.topProfDetLeft button{
+    width: 150px;
+    margin-top: 5px;
+}
+
+.topProfDetLeft{
+    margin: 5px;
+}
+
+.topProfDetRight{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.UpdateInfo{
+    align-self: flex-end;
+    margin: 1%;
+    height: 120px;
+}
+
+.UserInfo{
+    display: grid;
+    height: 100px;
+    grid-template-columns: 1fr 1fr;
+    justify-items: right;
+    font-family: "BNazanin";
+    font-size: large;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 5%;
+}
+
+.changeInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.changeInfo label{
+    font-family: "BNazanin";
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.changeInfo input{
+    text-align: right;
+    font-family: 'BNazanin';
+    width: 400px;
+    border-radius: 3px;
+}
+
+.changeInfo button{
+    font-family: 'BNazanin';
+    font-size: 18px;
+    width: 200px;
+    border-radius: 3px;
+    margin-top: 5px;
+  
+}
+
+.addStorePart{
+    margin-top: 110px;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+
+
+
+@media screen and (max-width:636px) {
+    .changeInfo input{
+        width: 250px; 
+    }
+}

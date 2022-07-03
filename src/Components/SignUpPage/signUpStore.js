@@ -7,7 +7,7 @@ import {
     Button, Modal, Navbar, Nav,
     NavDropdown, Container, Dropdown, Form
 } from 'react-bootstrap';
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { ReactPasswordChecklistProps } from "react-password-checklist";
 import axios from "axios"
 
@@ -15,7 +15,7 @@ import axios from "axios"
 
 
 
-const SignUpUser = () => {
+const SignUpStore = () => {
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
@@ -35,7 +35,7 @@ const SignUpUser = () => {
         setShowPassword(!showPassword);
     };
 
-    const signUpAcc = (e) => {
+    const signUpAcc = () => {
         let user={
             username: username,
             name: name,
@@ -44,15 +44,34 @@ const SignUpUser = () => {
             email: email,
             userType: "SELLER"
         }
-        console.log(user);
+        //  console.log(user);
         axios.post('http://ie-final-project.herokuapp.com/user/signup',user)
         .then((res)=>{
             console.log(res)
             setResponse(res)
+            checkUserType()
         },(error)=>{
              console.log(error)
         });
 
+    }
+
+    const [first, setFirst] = useState(true);
+    useEffect(() => {
+        if (!first) {
+            checkUserType()
+        }
+        setFirst(false);
+    }, [response]);
+
+    const checkUserType = ()=>{
+        //console.log("responsellllllllllllllllllllllllllll")
+        //console.log(response)
+        if(response.data.userType=="BUYER"){
+            navigate("/profile");
+         }else if(response.data.userType=="SELLER"){
+            navigate("/profile");
+        }
     }
 
 
@@ -107,4 +126,4 @@ const SignUpUser = () => {
     )
 }
 
-export default SignUpUser;
+export default SignUpStore;

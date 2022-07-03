@@ -3,41 +3,72 @@ import "./signUpPage.css";
 import torobPic from "../../torob.png"
 import searchPic from "../../search.png"
 import eyeImg from "../../eye.png"
+import { useDispatch, useSelector } from "react-redux"
+import { setOnlineUser } from "../../Redux/reducers";
 import {
     Button, Modal, Navbar, Nav,
     NavDropdown, Container, Dropdown, Form
 } from 'react-bootstrap';
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios";
 
 
 
 
 
+
 const Login = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [error, setError] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [response, setResponse] = useState("");
+    const [response, setResponse] = useState();
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => {
         setShowPassword(!showPassword);
     };
 
     const signUpAcc = () => {
-        let user={
+        let user = {
             username: username,
-            password : password
+            password: password
         }
-        console.log(user);
-        axios.post('http://ie-final-project.herokuapp.com/auth/login',user)
-        .then((res)=>{
-            console.log(res)
-            setResponse(res)
-        },(error)=>{
-             console.log(error)
-        });
+        //  console.log(user);
+        axios.post('http://ie-final-project.herokuapp.com/auth/login', user)
+            .then((res) => {
+                console.log(res)
+                setResponse(res)
+                if (res.status == 201) {
+                    dispatch(setOnlineUser(res.data.user))
 
+                } else {
+                    // setError(res.data.message)
+                    alert(res.data.message)
+                }
+            }, (e) => {
+                //console.log(e)
+            });
+
+    }
+    const [first, setFirst] = useState(true);
+    useEffect(() => {
+        if (!first) {
+            checkUserType()
+        }
+        setFirst(false);
+    }, [response]);
+
+
+
+    const checkUserType = () => {
+        // console.log("responsellllllllllllllllllllllllllll")
+        // console.log(response)
+        if (response.data.user.userType == "BUYER") {
+            navigate("user/profile");
+        } else if (response.data.user.userType == "SELLER") {
+            navigate("store/profile");
+        }
     }
 
 
@@ -61,10 +92,10 @@ const Login = () => {
                         <lable>پسورد</lable>
                         <div className="password">
                             <img src={eyeImg} onClick={togglePassword}></img>
-                            <input type={showPassword ? "text" : "password"} 
-                            onChange={(e) => {
-                                setPassword(e.target.value);
-                            }} required></input>
+                            <input type={showPassword ? "text" : "password"}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }} required></input>
                         </div>
                         <button className="btn-danger" onClick={() => signUpAcc()}>تایید و ارسال</button>
 
